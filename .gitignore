@@ -1,0 +1,31 @@
+# Environment
+.venv/
+venv/
+env/
+*.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# IDE specific
+.vscode/
+.idea/
+
+# Input/Output folders - ignore content but keep folders
+/input_presentations/*
+/output_presentations/*
+# Use .gitkeep files to track empty directories if needed
+!/input_presentations/.gitkeep
+!/output_presentations/.gitkeep
+
+# Temporary files
+*.tmp
+*.swp
