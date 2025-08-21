@@ -14,18 +14,20 @@ class PPTXService:
     def __init__(self):
         self.run_mapping: Dict[str, _Run] = {}
         self.text_mapping: Dict[str, str] = {}
+        self.presentation: Optional[Presentation] = None
     
     def extract_texts(self, file_path: str) -> Dict[str, str]:
         """Extrai textos do PowerPoint mantendo referências dos runs"""
         
         try:
-            prs = Presentation(file_path)
+            # Carregar e manter referência da apresentação
+            self.presentation = Presentation(file_path)
             self.run_mapping = {}
             self.text_mapping = {}
             
             run_counter = 0
             
-            for slide_idx, slide in enumerate(prs.slides):
+            for slide_idx, slide in enumerate(self.presentation.slides):
                 for shape in slide.shapes:
                     if hasattr(shape, "text_frame") and shape.text_frame:
                         for paragraph in shape.text_frame.paragraphs:
@@ -74,13 +76,11 @@ class PPTXService:
         """Salva a apresentação traduzida"""
         
         try:
-            # Recarregar a apresentação original
-            prs = Presentation(original_path)
+            if self.presentation is None:
+                raise FileProcessingError("Nenhuma apresentação carregada. Execute extract_texts primeiro.")
             
-            # Reaplicar as traduções (os runs já foram modificados)
-            # Como mantemos as referências, as modificações já estão aplicadas
-            
-            prs.save(output_path)
+            # Salvar a apresentação com as modificações já aplicadas
+            self.presentation.save(output_path)
             return output_path
             
         except Exception as e:

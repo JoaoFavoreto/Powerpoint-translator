@@ -30,10 +30,19 @@ class PowerPointTranslationChain(Chain):
         arbitrary_types_allowed = True
     
     def __init__(self, **kwargs):
+        # Inicializar os serviços antes de chamar super()
+        translation_service = TranslationService()
+        pptx_service = PPTXService()
+        output_parser = TranslationOutputParser()
+        
+        # Passar os serviços para o kwargs
+        kwargs.update({
+            'translation_service': translation_service,
+            'pptx_service': pptx_service,
+            'output_parser': output_parser
+        })
+        
         super().__init__(**kwargs)
-        self.translation_service = TranslationService()
-        self.pptx_service = PPTXService()
-        self.output_parser = TranslationOutputParser()
     
     @property
     def input_keys(self) -> list[str]:
