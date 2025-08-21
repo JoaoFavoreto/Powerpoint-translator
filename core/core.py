@@ -3,7 +3,6 @@ from pptx import Presentation
 from .pptx_processor import extract_paragraphs_with_run_mapping
 from .translator import translate_text_batch
 import os
-import re
 
 def create_formatted_text_with_markers(original_runs: list) -> str:
     """
