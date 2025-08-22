@@ -40,11 +40,18 @@ class PPTXService:
             for slide_idx, slide in enumerate(self.presentation.slides):
                 logger.debug(f"📑 Processando slide {slide_idx + 1}")
                 
-                # Processar shapes principais
+                # Processar shapes principais (incluindo títulos, caixas de texto, etc.)
                 for shape in slide.shapes:
                     if hasattr(shape, "text_frame") and shape.text_frame:
                         run_counter, paragraph_counter = self._extract_from_text_frame(
                             shape.text_frame, slide_idx, run_counter, paragraph_counter)
+                    
+                    # Processar shapes de grupo (podem conter textos)
+                    elif hasattr(shape, "shapes"):
+                        for sub_shape in shape.shapes:
+                            if hasattr(sub_shape, "text_frame") and sub_shape.text_frame:
+                                run_counter, paragraph_counter = self._extract_from_text_frame(
+                                    sub_shape.text_frame, slide_idx, run_counter, paragraph_counter)
                     
                     # Processar tabelas
                     elif shape.has_table:
@@ -55,6 +62,17 @@ class PPTXService:
                                     run_counter, paragraph_counter = self._extract_from_text_frame(
                                         cell.text_frame, slide_idx, run_counter, paragraph_counter,
                                         f"table_{row_idx}_{col_idx}")
+                    
+                    # Processar charts (gráficos) se tiverem texto
+                    elif hasattr(shape, "has_chart") and shape.has_chart:
+                        try:
+                            chart = shape.chart
+                            if hasattr(chart, "chart_title") and chart.chart_title:
+                                if hasattr(chart.chart_title, "text_frame") and chart.chart_title.text_frame:
+                                    run_counter, paragraph_counter = self._extract_from_text_frame(
+                                        chart.chart_title.text_frame, slide_idx, run_counter, paragraph_counter, "chart_title")
+                        except Exception as e:
+                            logger.debug(f"Erro ao processar gráfico: {e}")
                 
                 # Processar notas do slide
                 if slide.has_notes_slide:
@@ -88,12 +106,17 @@ class PPTXService:
             if not paragraph_text:
                 continue
             
-            # Para parágrafos com bullet points ou múltiplos runs, extrair por parágrafo
-            if len(paragraph.runs) > 1 or paragraph.level > 0:  # Bullet point ou múltiplos runs
+            # Para parágrafos com bullet points, múltiplos runs, ou que sejam títulos/headings
+            is_heading = len(paragraph_text) <= 50 and len(paragraph.runs) == 1  # Provável título
+            has_bullets = paragraph.level > 0  # Bullet point
+            has_multiple_runs = len(paragraph.runs) > 1  # Múltiplos runs
+            
+            if has_bullets or has_multiple_runs or is_heading:
                 paragraph_id = f"para_{paragraph_counter}"
                 self.paragraph_mapping[paragraph_id] = paragraph
                 self.text_mapping[paragraph_id] = paragraph_text
                 paragraph_counter += 1
+                logger.debug(f"Parágrafo detectado: {paragraph_id} ({'título' if is_heading else 'bullet' if has_bullets else 'múltiplo'})")
             else:
                 # Para runs únicos simples, extrair individualmente  
                 for run in paragraph.runs:
@@ -124,28 +147,51 @@ class PPTXService:
         return runs_info
     
     def apply_translations(self, translations: Dict[str, str]) -> None:
-        """Aplica as traduções ao documento PowerPoint."""
+        """Aplica as traduções ao documento PowerPoint preservando formatação."""
         if not self.presentation:
             raise FileProcessingError("Apresentação não carregada")
         
         try:
             logger.debug(f"Aplicando {len(translations)} traduções")
-            logger.debug(f"Chaves de tradução recebidas: {list(translations.keys())[:5]}")
-            logger.debug(f"Chaves em text_mapping: {list(self.text_mapping.keys())[:5]}")
-            
             applied_count = 0
             
             # Aplicar traduções por parágrafo (preserva formatação de bullet points)
             for para_id, paragraph in self.paragraph_mapping.items():
                 if para_id in translations:
-                    # Substituir o texto completo do parágrafo
-                    paragraph.text = translations[para_id]
+                    # Preservar formatação: limpar runs e recriar com formatação do primeiro run
+                    if paragraph.runs:
+                        # Salvar formatação do primeiro run
+                        first_run = paragraph.runs[0]
+                        font_name = first_run.font.name
+                        font_size = first_run.font.size
+                        font_bold = first_run.font.bold
+                        font_italic = first_run.font.italic
+                        font_color = first_run.font.color.rgb if first_run.font.color.type == 1 else None
+                        
+                        # Limpar texto atual
+                        paragraph.clear()
+                        
+                        # Adicionar novo run com formatação preservada
+                        new_run = paragraph.add_run()
+                        new_run.text = translations[para_id]
+                        if font_name:
+                            new_run.font.name = font_name
+                        if font_size:
+                            new_run.font.size = font_size
+                        if font_bold is not None:
+                            new_run.font.bold = font_bold
+                        if font_italic is not None:
+                            new_run.font.italic = font_italic
+                        if font_color:
+                            new_run.font.color.rgb = font_color
+                    else:
+                        # Fallback se não houver runs
+                        paragraph.text = translations[para_id]
+                    
                     applied_count += 1
                     logger.debug(f"Parágrafo traduzido: {para_id}")
-                else:
-                    logger.debug(f"Parágrafo NÃO encontrado nas traduções: {para_id}")
             
-            # Aplicar traduções por run (textos não incluídos em parágrafos complexos)
+            # Aplicar traduções por run (preserva formatação original)
             for run_id, run in self.run_mapping.items():
                 if run_id in translations:
                     # Verificar se este run não faz parte de um parágrafo já traduzido
@@ -154,11 +200,10 @@ class PPTXService:
                         for paragraph in self.paragraph_mapping.values()
                     )
                     if not run_in_paragraph:
+                        # Preservar formatação original do run
                         run.text = translations[run_id]
                         applied_count += 1
                         logger.debug(f"Run traduzido: {run_id}")
-                else:
-                    logger.debug(f"Run NÃO encontrado nas traduções: {run_id}")
             
             logger.info(f"{applied_count} traduções aplicadas ao PowerPoint")
             self.translated = True

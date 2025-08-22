@@ -132,3 +132,88 @@
 2025-08-21 21:20:34,332 - services.pptx_service - DEBUG - Run traduzido: run_13
 2025-08-21 21:20:34,334 - services.pptx_service - DEBUG - Run traduzido: run_14
 2025-08-21 21:20:34,334 - services.pptx_service - INFO - 24 traduções aplicadas ao PowerPoint
+2025-08-21 21:26:38,683 - services.pptx_service - DEBUG - Parágrafo detectado: para_0 (título)
+2025-08-21 21:26:38,683 - services.pptx_service - DEBUG - Parágrafo detectado: para_1 (título)
+2025-08-21 21:26:38,684 - services.pptx_service - DEBUG - Parágrafo detectado: para_2 (título)
+2025-08-21 21:26:38,685 - services.pptx_service - DEBUG - Parágrafo detectado: para_3 (título)
+2025-08-21 21:26:38,685 - services.pptx_service - DEBUG - Parágrafo detectado: para_4 (título)
+2025-08-21 21:26:38,688 - services.pptx_service - DEBUG - Parágrafo detectado: para_5 (título)
+2025-08-21 21:26:38,689 - services.pptx_service - DEBUG - Parágrafo detectado: para_6 (título)
+2025-08-21 21:26:38,689 - services.pptx_service - DEBUG - Parágrafo detectado: para_7 (bullet)
+2025-08-21 21:26:38,690 - services.pptx_service - DEBUG - Parágrafo detectado: para_8 (bullet)
+2025-08-21 21:26:38,690 - services.pptx_service - DEBUG - Parágrafo detectado: para_9 (bullet)
+2025-08-21 21:26:38,691 - services.pptx_service - DEBUG - Parágrafo detectado: para_10 (título)
+2025-08-21 21:26:38,699 - services.pptx_service - DEBUG - Parágrafo detectado: para_11 (título)
+2025-08-21 21:26:38,704 - services.pptx_service - DEBUG - Parágrafo detectado: para_12 (título)
+2025-08-21 21:26:38,705 - services.pptx_service - DEBUG - Parágrafo detectado: para_13 (título)
+2025-08-21 21:26:38,706 - services.pptx_service - DEBUG - Parágrafo detectado: para_14 (título)
+2025-08-21 21:26:38,706 - services.pptx_service - DEBUG - Parágrafo detectado: para_15 (múltiplo)
+2025-08-21 21:26:38,707 - services.pptx_service - DEBUG - Parágrafo detectado: para_16 (múltiplo)
+2025-08-21 21:26:38,707 - services.pptx_service - DEBUG - Parágrafo detectado: para_17 (múltiplo)
+2025-08-21 21:26:38,707 - services.pptx_service - DEBUG - Parágrafo detectado: para_18 (múltiplo)
+2025-08-21 21:26:38,708 - services.pptx_service - DEBUG - Parágrafo detectado: para_19 (múltiplo)
+2025-08-21 21:26:38,708 - services.pptx_service - DEBUG - Parágrafo detectado: para_20 (múltiplo)
+2025-08-21 21:26:38,708 - services.pptx_service - DEBUG - Parágrafo detectado: para_21 (múltiplo)
+2025-08-21 21:26:38,708 - services.pptx_service - DEBUG - Parágrafo detectado: para_22 (múltiplo)
+2025-08-21 21:26:38,709 - services.pptx_service - DEBUG - Parágrafo detectado: para_23 (múltiplo)
+2025-08-21 21:26:38,709 - services.pptx_service - DEBUG - Parágrafo detectado: para_24 (título)
+2025-08-21 21:26:38,709 - services.pptx_service - DEBUG - Parágrafo detectado: para_25 (título)
+2025-08-21 21:26:38,714 - services.pptx_service - DEBUG -    - Runs extraídos: 5
+2025-08-21 21:26:38,715 - services.pptx_service - DEBUG -    - Parágrafos extraídos: 26
+2025-08-21 21:26:38,715 - services.pptx_service - DEBUG -    - Total de textos: 31
+2025-08-21 21:26:38,721 - services.pptx_service - DEBUG -    run_0: 'O Grupo Azzas apresenta um momento de crescimento ...'
+2025-08-21 21:26:38,721 - services.pptx_service - DEBUG -    para_0: 'Fonte: Azzas 2154, Mirow & Co....'
+2025-08-21 21:26:38,722 - services.pptx_service - DEBUG -    para_1: 'Grupo Azzas...'
+2025-08-21 21:26:38,723 - asyncio - DEBUG - Using selector: SelectSelector
+2025-08-21 21:26:38,790 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-27946525-5edc-426d-9a74-254748dd2ea8', 'json_data': {'messages': [{'content': 'Você é um tradutor profissional especializado em apresentações PowerPoint.\n\nTAREFA: Traduzir textos de slides do auto para English.\n\nESTILO: mantenha um tom formal e técnico, preservando termos especializados\n\nREGRAS IMPORTANTES:\n1. Preserve EXATAMENTE a estrutura JSON de entrada\n2. Traduza apenas os valores, nunca as chaves\n3. Mantenha formatação de números, datas e símbolos\n4. Se um texto estiver vazio ou for apenas espaços, mantenha igual\n5. Para textos muito curtos (1-2 palavras), considere o contexto dos textos vizinhos', 'role': 'system'}, {'content': 'Traduza os seguintes textos mantendo a estrutura JSON:\n\n{\n  "run_0": "O Grupo Azzas apresenta um momento de crescimento pós-fusão, com aumento de receita (9%) e lucro líquido (252,4%) no 1S25 em relação ao 1S24",\n  "para_0": "Fonte: Azzas 2154, Mirow & Co.",\n  "para_1": "Grupo Azzas",\n  "para_2": "Vestuário feminino",\n  "para_3": "Calçados e acessórios",\n  "para_4": "Vestuário democrático",\n  "para_5": "Vestuário masculino",\n  "para_6": "Momento atual do grupo",\n  "para_7": "A perspespectiva econômica do grupo é de uma crescimento consistente da receita, com margem operacional em estabilização e integração das marcas em andamento",\n  "para_8": "O grupo apresentou no 1º semestre de 2025 uma receita líquida de \\u000bR$ 6,8 bilhões (9% de aumento YoY) e lucro líquido de R$ 655,5 milhões (252,4% de aumento YoY).",\n  "para_9": "O segmento de moda feminina é atualmente o mais rentável, com receita bruta de R$ 2,6 bilhões no 1S25 (23,2% de aumento YoY)",\n  "run_1": "Receita líquida, margem operacional e margem líquida",\n  "para_10": "R$ Bi",\n  "run_2": "Fusão pode gerar até R$ 4 Bi em ganhos fiscais e expansão internacional, além de R$ 1,1 Bi em receita incremental até 2027, impulsionada pelo crescimento do setor de moda",\n  "para_11": "Fonte: IBGE, Forbes, Mirow & Co.",\n  "para_12": "Setor de varejo de moda",\n  "para_13": "Ganhos potenciais da fusão",\n  "para_14": "Posicionamento do grupo",\n  "para_15": "Potencial de R$ 4 Bi em benefícios fiscais (como ágio), neutralizando impactos tributários",\n  "para_16": "Crescimento incremental de R$ 1,1 Bi até 2027, vindo principalmente da integração de marcas de vestuário da Soma com o portfólio de calçados, bolsas e acessórios da Arezzo",\n  "para_17": "A empresa espera aumento de receita com uma estratégia de cross-selling entre as marcas de vestuário e calçados, além de uma forte expansão no canal B2B (R$ 240 MM adicionais)",\n  "para_18": "Expansão internacional utilizando o expertise da Farm Global, acelerando a entrada de outras marcas do grupo como Animale e Hering",\n  "run_3": "2º maior faturamento do Brasil, com presença em mais de 2000 lojas",\n  "para_19": "Foco na LATAM a longo prazo, especialmente para marcas como Farm, Animale e Hering no mercado internacional",\n  "para_20": "Portfólio com diversificação entre calçados, vestuário feminino, masculino e infantil",\n  "para_21": "Investimentos em inovação digital e e-commerce, buscando expandir o alcance multicanal",\n  "para_22": "O setor de varejo de moda apresentou crescimento superior ao varejo geral em 2025: moda acumulou alta de 5,5% em volume de vendas e 8,6% em receita no primeiro semestre de 2025",\n  "para_23": "Nos últimos 12 meses, os resultados do varejo de moda também são consistentes, com um aumento de 5,5% em vendas e 8% em receita",\n  "run_4": "O mercado de moda está se recuperando após a pandemia e apresenta tendências de crescimento, especialmente no e-commerce",\n  "para_24": "Variação mensal do varejo geral e de moda em 2025",\n  "para_25": "% sobre o mês anterior"\n}\n\nResponda APENAS com o JSON traduzido, sem explicações adicionais.', 'role': 'user'}], 'model': 'gpt-4o', 'stream': False, 'temperature': 0.1}}
+2025-08-21 21:26:38,792 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-08-21 21:26:38,798 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+2025-08-21 21:26:38,819 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001F0EEA3B380>
+2025-08-21 21:26:38,820 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001F0EE8BA9F0> server_hostname='api.openai.com' timeout=None
+2025-08-21 21:26:38,837 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001F0EEA496D0>
+2025-08-21 21:26:38,838 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-08-21 21:26:38,839 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-08-21 21:26:38,839 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-08-21 21:26:38,839 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-08-21 21:26:38,839 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-08-21 21:26:44,476 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 22 Aug 2025 00:26:43 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'instituto-tecnol-gico-de-aeron-utica-ontlva'), (b'openai-processing-ms', b'4938'), (b'openai-project', b'proj_Ptz1nacuWbCx4r2NMCBjapTE'), (b'openai-version', b'2020-10-01'), (b'x-envoy-upstream-service-time', b'5104'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-limit-tokens', b'30000'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-remaining-tokens', b'29070'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-ratelimit-reset-tokens', b'1.86s'), (b'x-request-id', b'req_b888e827745b9056a4b79fac147d571a'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=aSykFbE6XXEZMM4Ix7nwgd2fd40JEfHm7LseuvYQhhI-1755822403-1.0.1.1-muXnC5cmakJzZYYr3QwBuStlqTdNMr.Pcw7O8z8bsCCdi4TZnAOsj_1YHOqe06mGp8g30ekir693urmbqlXUWhcVCofl37Uspwk_ikFLARg; path=/; expires=Fri, 22-Aug-25 00:56:43 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=vLTqPZvkBT0txvQDvtqbrf8rOYqGVtCkBRLNh31mh2c-1755822403367-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'972e3d628cd50183-GRU'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-08-21 21:26:44,479 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-21 21:26:44,480 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-08-21 21:26:44,482 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-08-21 21:26:44,482 - httpcore.http11 - DEBUG - response_closed.started
+2025-08-21 21:26:44,483 - httpcore.http11 - DEBUG - response_closed.complete
+2025-08-21 21:26:44,484 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Fri, 22 Aug 2025 00:26:43 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'instituto-tecnol-gico-de-aeron-utica-ontlva'), ('openai-processing-ms', '4938'), ('openai-project', 'proj_Ptz1nacuWbCx4r2NMCBjapTE'), ('openai-version', '2020-10-01'), ('x-envoy-upstream-service-time', '5104'), ('x-ratelimit-limit-requests', '500'), ('x-ratelimit-limit-tokens', '30000'), ('x-ratelimit-remaining-requests', '499'), ('x-ratelimit-remaining-tokens', '29070'), ('x-ratelimit-reset-requests', '120ms'), ('x-ratelimit-reset-tokens', '1.86s'), ('x-request-id', 'req_b888e827745b9056a4b79fac147d571a'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=aSykFbE6XXEZMM4Ix7nwgd2fd40JEfHm7LseuvYQhhI-1755822403-1.0.1.1-muXnC5cmakJzZYYr3QwBuStlqTdNMr.Pcw7O8z8bsCCdi4TZnAOsj_1YHOqe06mGp8g30ekir693urmbqlXUWhcVCofl37Uspwk_ikFLARg; path=/; expires=Fri, 22-Aug-25 00:56:43 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=vLTqPZvkBT0txvQDvtqbrf8rOYqGVtCkBRLNh31mh2c-1755822403367-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '972e3d628cd50183-GRU'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-08-21 21:26:44,486 - openai._base_client - DEBUG - request_id: req_b888e827745b9056a4b79fac147d571a
+2025-08-21 21:26:44,518 - services.pptx_service - DEBUG - Aplicando 31 traduções
+2025-08-21 21:26:44,520 - services.pptx_service - DEBUG - Parágrafo traduzido: para_0
+2025-08-21 21:26:44,521 - services.pptx_service - DEBUG - Parágrafo traduzido: para_1
+2025-08-21 21:26:44,524 - services.pptx_service - DEBUG - Parágrafo traduzido: para_2
+2025-08-21 21:26:44,526 - services.pptx_service - DEBUG - Parágrafo traduzido: para_3
+2025-08-21 21:26:44,528 - services.pptx_service - DEBUG - Parágrafo traduzido: para_4
+2025-08-21 21:26:44,529 - services.pptx_service - DEBUG - Parágrafo traduzido: para_5
+2025-08-21 21:26:44,529 - services.pptx_service - DEBUG - Parágrafo traduzido: para_6
+2025-08-21 21:26:44,531 - services.pptx_service - DEBUG - Parágrafo traduzido: para_7
+2025-08-21 21:26:44,533 - services.pptx_service - DEBUG - Parágrafo traduzido: para_8
+2025-08-21 21:26:44,535 - services.pptx_service - DEBUG - Parágrafo traduzido: para_9
+2025-08-21 21:26:44,536 - services.pptx_service - DEBUG - Parágrafo traduzido: para_10
+2025-08-21 21:26:44,536 - services.pptx_service - DEBUG - Parágrafo traduzido: para_11
+2025-08-21 21:26:44,537 - services.pptx_service - DEBUG - Parágrafo traduzido: para_12
+2025-08-21 21:26:44,538 - services.pptx_service - DEBUG - Parágrafo traduzido: para_13
+2025-08-21 21:26:44,539 - services.pptx_service - DEBUG - Parágrafo traduzido: para_14
+2025-08-21 21:26:44,540 - services.pptx_service - DEBUG - Parágrafo traduzido: para_15
+2025-08-21 21:26:44,541 - services.pptx_service - DEBUG - Parágrafo traduzido: para_16
+2025-08-21 21:26:44,543 - services.pptx_service - DEBUG - Parágrafo traduzido: para_17
+2025-08-21 21:26:44,544 - services.pptx_service - DEBUG - Parágrafo traduzido: para_18
+2025-08-21 21:26:44,545 - services.pptx_service - DEBUG - Parágrafo traduzido: para_19
+2025-08-21 21:26:44,545 - services.pptx_service - DEBUG - Parágrafo traduzido: para_20
+2025-08-21 21:26:44,546 - services.pptx_service - DEBUG - Parágrafo traduzido: para_21
+2025-08-21 21:26:44,547 - services.pptx_service - DEBUG - Parágrafo traduzido: para_22
+2025-08-21 21:26:44,547 - services.pptx_service - DEBUG - Parágrafo traduzido: para_23
+2025-08-21 21:26:44,549 - services.pptx_service - DEBUG - Parágrafo traduzido: para_24
+2025-08-21 21:26:44,549 - services.pptx_service - DEBUG - Parágrafo traduzido: para_25
+2025-08-21 21:26:44,549 - services.pptx_service - DEBUG - Run traduzido: run_0
+2025-08-21 21:26:44,550 - services.pptx_service - DEBUG - Run traduzido: run_1
+2025-08-21 21:26:44,551 - services.pptx_service - DEBUG - Run traduzido: run_2
+2025-08-21 21:26:44,551 - services.pptx_service - DEBUG - Run traduzido: run_3
+2025-08-21 21:26:44,551 - services.pptx_service - DEBUG - Run traduzido: run_4
+2025-08-21 21:26:44,552 - services.pptx_service - INFO - 31 traduções aplicadas ao PowerPoint
