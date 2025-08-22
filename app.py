@@ -1,8 +1,20 @@
 import streamlit as st
 import tempfile
 import os
+import logging
 from datetime import datetime
 from typing import Dict, Optional
+
+# Configurar logging
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler('translation_debug.log')
+    ]
+)
+logger = logging.getLogger(__name__)
 
 from chains.translation_chain import PowerPointTranslationChain
 from core.models import TranslationStyle
